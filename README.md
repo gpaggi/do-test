@@ -31,7 +31,7 @@ It also exposes Prometheus metrics at the /metrics endpoint, see documentation b
   
 Sample responses:
 ```
-curl -i -u bob:bob123 -d '{"username":"xyz","upload":"xyz"}' localhost:9090/api/v1/echo
+curl -i -u bob:bob123 -d '{"username":"xyz","upload":"xyz"}' http://localhost:9090/api/v1/echo
 HTTP/1.1 200 OK
 Content-Type: application/json
 Date: Sat, 17 Jul 2021 07:11:28 GMT
@@ -40,7 +40,7 @@ Content-Length: 50
 {"echoed":"true","upload":"xyz","username":"xyz"}
 ```
 ```
-curl -i -u bob:bob123 -d '{"username":"xyz","upload":"xyz","echoed":"true"}' localhost:9090/api/v1/echo
+curl -i -u bob:bob123 -d '{"username":"xyz","upload":"xyz","echoed":"true"}' http://localhost:9090/api/v1/echo
 HTTP/1.1 400 Bad Request
 Content-Type: application/json
 Date: Sat, 17 Jul 2021 07:11:53 GMT
@@ -49,7 +49,7 @@ Content-Length: 58
 {"error":"Top level echoed field is already set to true"}
 ```
 ```
-curl -i -u bob:bob123 -d '{"username":"xy' localhost:9090/api/v1/echo
+curl -i -u bob:bob123 -d '{"username":"xy' http://localhost:9090/api/v1/echo
 HTTP/1.1 400 Bad Request
 Content-Type: application/json
 Date: Sat, 17 Jul 2021 07:12:11 GMT
@@ -58,7 +58,7 @@ Content-Length: 56
 {"error":"Malformed request, input must be valid JSON"}
 ```
 ```
-curl -i -u bob:john -d '{"username":"xyz","upload":"xyz"}' localhost:9090/api/v1/echo
+curl -i -u bob:john -d '{"username":"xyz","upload":"xyz"}' http://localhost:9090/api/v1/echo
 HTTP/1.1 401 Unauthorized
 Content-Type: text/plain; charset=utf-8
 Www-Authenticate: Basic realm="Restricted"
@@ -76,7 +76,7 @@ Unauthorized.
   
 Sample response:
 ```
-curl -s localhost:9090/metrics | grep echoapi
+curl -s http://localhost:9090/metrics | grep echoapi
 # HELP echoapi_http_duration_seconds Duration of HTTP requests.
 # TYPE echoapi_http_duration_seconds histogram
 echoapi_http_duration_seconds_bucket{path="/api/v1/echo",le="0.005"} 0
