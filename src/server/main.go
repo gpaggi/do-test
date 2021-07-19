@@ -66,7 +66,7 @@ func Start(listen, htpasswdPath string) error {
 
 	// Simple two routes setup
 	r.Path("/metrics").Handler(promhttp.Handler()).Methods(http.MethodGet)
-	r.HandleFunc("/api/v1/echo", H.BasicAuth(H.EchoHandler, htp)).Methods(http.MethodPost, http.MethodPut)
+	r.HandleFunc("/api/echo", H.BasicAuth(H.EchoHandler, htp)).Methods(http.MethodPost, http.MethodPut)
 
 	// Start the webserver
 	log.Infof("Starting up and binding to %s", listen)

@@ -50,7 +50,7 @@ var (
 // an artibrary slice of bytes. It returns the HTTP response code and
 // the response body as string
 func sendReq(r *mux.Router, p []byte) (int, string) {
-	req, _ := http.NewRequest("POST", "/api/v1/echo", bytes.NewBuffer(p))
+	req, _ := http.NewRequest("POST", "/api/echo", bytes.NewBuffer(p))
 	res := httptest.NewRecorder()
 	r.ServeHTTP(res, req)
 	bodyBytes, err := ioutil.ReadAll(res.Body)
@@ -65,7 +65,7 @@ func sendReq(r *mux.Router, p []byte) (int, string) {
 // we test the doEcho function via a mux handler and an httptest.ResponseRecorder
 func TestEchoHandler(t *testing.T) {
 	r := mux.NewRouter()
-	r.HandleFunc("/api/v1/echo", EchoHandler).Methods(http.MethodPost)
+	r.HandleFunc("/api/echo", EchoHandler).Methods(http.MethodPost)
 
 	for _, tt := range echoTests {
 		t.Logf("Running test with input %v", tt.input)
