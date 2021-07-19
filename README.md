@@ -167,13 +167,14 @@ make test
 Without Docker:
 ```
 make build
-LOGLEVEL=DEBUG ./bin/echoapi
+LOG_LEVEL=DEBUG ./bin/echoapi
 ```
 
 With Docker:
 ```
 make build-docker
-docker run --rm -p 8080:8080 -e "LISTEN_ADDR=:8080" docker.io/gpaggi/echoapi:latest
+docker run --rm -p 8080:8080 -v $PWD/conf/htpasswd:/var/lib/echoapi/htpasswd \
+  -e "LISTEN_ADDR=:8080" -e "HTPASSWD_PATH=/var/lib/echoapi/htpasswd" docker.io/gpaggi/echoapi:latest
 ```
 
 
