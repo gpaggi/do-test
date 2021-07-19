@@ -119,6 +119,7 @@ echoapi_http_requests_total{code="400",method="POST",path="/api/v1/echo"} 2
 | 200 | `OK` |
 | 400 | `BAD REQUEST` |
 | 401 | `UNAUTHORIZED` |
+| 404 | `NOT FOUND` |
 
 ## Authentication
 The API supports HTTP basic auth via an htpasswd file, for which it supports SHA1 (insecure), Apache salted MD5 or Bcrypt (preferred).  
