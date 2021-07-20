@@ -27,7 +27,7 @@ It also exposes Prometheus metrics at the /metrics endpoint, see documentation b
 * Protected with basic auth
 * Returns the POST'd JSON with an added top-level field 'echoed: true'
 * If the field is already set to true it returns HTTP 400
-* If the JSON is not valid and cannot be unmarshalled it it returns HTTP 400  
+* If the JSON is not valid and cannot be unmarshalled it returns HTTP 400  
   
 Sample responses:
 ```
@@ -71,7 +71,7 @@ Unauthorized.
 #### Metrics  
 `GET /metrics`  
 * Returns metrics in Prometheus format:
-  * echoapi_http_duration_seconds_bucket for latency informations.
+  * echoapi_http_duration_seconds_bucket for latency information.
   * echoapi_http_requests_total for requests counts by code, method and path.  
   
 Sample response:
